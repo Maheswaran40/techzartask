@@ -1,4 +1,4 @@
-import "dotenv/config";
+import dotenv from 'dotenv';
 import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
@@ -8,13 +8,14 @@ import authRoutes from "./routes/authRoutes.js";
 import employeeRoutes from "./routes/employeeRoutes.js";
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 
+dotenv.config()
+
 const app = express();
 // app.use(cors({ origin: process.env.CLIENT_URL || "http://localhost:5173", credentials: true }));
 // app.use(cors())
 const allowedOrigins = [
   "http://localhost:5173",
   "http://localhost:5174",
-  "https://techzarinfoerp.netlify.app",
 ];
 app.use(
   cors({
